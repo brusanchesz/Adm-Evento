@@ -14,11 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/cadastro" element={<CadastroUsuario />} />
-<<<<<<< HEAD
           <Route path="/palestra" element={<RotaProtegida><CadastroPalestra /></RotaProtegida>} /> {/*so pode depois que fizer login */}
-=======
-          <Route path="/palestra" element={<RotaProtegida><CadastroPalestra /></RotaProtegida>} />
->>>>>>> a88600e50ce9045cc74baf91e9012807a221da4e
         </Routes>
        </Router>
     </AuthProvider>
