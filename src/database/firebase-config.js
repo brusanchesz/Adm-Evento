@@ -14,3 +14,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+// coleção = tabela
+// documentos = tuplas - linhas
+// colunas
+//  adicionar documentos com setDoc e addDoc (autoincremente)

@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { collection, addDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
+import {db} from '../../database/firebase-config';
 
 const CadastroUsuario = () => {
 
@@ -18,13 +21,20 @@ const CadastroUsuario = () => {
 };
 
 // para prevenir a execução padrão que e apagar quando envia no form
- const meuSubmit = (evento) => {
-  evento.preventDefault()
-  console.log(formulario)
- }
-
-
+ const meuSubmit = async (evento) => { // deixou a função como assincrona "async"
+  evento.preventDefault() // evita comportamento padrão do form
+  console.log(formulario) //await - metodo assincrono, O formulario é um objeto
  
+ const docRef = await addDoc(
+  collection(db, "usuarios"), formulario
+ )
+}
+
+const salvar2 = async () => {
+  await setDoc(doc(db, "usuarios", /*aqui vai a chave =>*/ formulario.email ), formulario) 
+  }
+  
+
  return (
     <div>{/*Criando states*/}
       <h2>Cadastro de Usuário</h2>
@@ -57,6 +67,9 @@ const CadastroUsuario = () => {
 precisamos de uma funcao para fazer essas informações irem para um bd */}
 
       </form>
+
+      <button onClick={salvar2}>Salvar 2</button>
+      
     </div>
   );
 };
